@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kylaash's Chatbot</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="chat-app">
-
-  <div class="header">
+<main class="chat-app">
+  <header class="header">
     🤖 Kylaash's Chatbot
-  </div>
+  </header>
 
-  <div id="chatbox">
+  <section id="chatbox">
     <div id="messages"></div>
-  </div>
+    <div class="typing-indicator" id="typing" style="display: none;">
+      <span></span><span></span><span></span>
+    </div>
+  </section>
 
-  <div class="typing" id="typing">Bot is typing...</div>
-
-  <div class="input-area">
-    <input type="text" id="userInput" placeholder="Ask anything..." />
-    <button onclick="sendMessage()">➤</button>
-  </div>
-
-</div>
+  <footer class="input-area">
+    <input type="text" id="userInput" placeholder="Ask anything..." aria-label="Chat input" />
+    <button onclick="sendMessage()" aria-label="Send message">➤</button>
+  </footer>
+</main>
 
 <script src="chatbot-data.js"></script>
 <script src="script.js"></script>

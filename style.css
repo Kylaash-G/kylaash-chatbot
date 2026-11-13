@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #ff6a00, #ee0979);
   display: flex;
   justify-content: center;
@@ -9,86 +9,141 @@ body {
 }
 
 .chat-app {
-  width: 380px;
-  height: 600px;
+  width: 100%;
+  max-width: 400px;
+  height: 650px;
   background: #1e1e2f;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 0 20px black;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .header {
   background: linear-gradient(90deg, #00c6ff, #0072ff);
-  padding: 15px;
+  padding: 18px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
 #chatbox {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+#chatbox::-webkit-scrollbar {
+  width: 6px;
+}
+#chatbox::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .message {
-  padding: 10px;
-  margin: 8px;
-  border-radius: 15px;
-  max-width: 75%;
-  animation: fadeIn 0.3s ease-in;
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 80%;
+  font-size: 15px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .user {
   background: #00c6ff;
   align-self: flex-end;
-  color: black;
+  color: #000;
+  border-bottom-right-radius: 4px;
 }
 
 .bot {
   background: #ff6a00;
   align-self: flex-start;
-  color: white;
+  color: #fff;
+  border-bottom-left-radius: 4px;
 }
 
-.typing {
-  font-size: 12px;
-  color: #aaa;
-  margin-left: 10px;
-  display: none;
+.typing-indicator {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 12px 16px;
+  background: #2c2c3e;
+  border-radius: 18px;
+  border-bottom-left-radius: 4px;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #aaa;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
 }
 
 .input-area {
   display: flex;
-  padding: 10px;
-  background: #2c2c3e;
+  padding: 15px;
+  background: #262637;
+  gap: 10px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid #3d3d5c;
+  background: #1e1e2f;
+  color: white;
+  outline: none;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #00c6ff;
 }
 
 button {
-  margin-left: 8px;
-  padding: 10px 15px;
+  padding: 10px 18px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   background: #00c6ff;
   color: white;
   cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s, background 0.3s;
 }
 
 button:hover {
   background: #0072ff;
+  transform: scale(1.05);
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
